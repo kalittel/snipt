@@ -3,10 +3,10 @@ function setup() {
 }
 
 function draw() {
-  background('rgb(245,234,247)');
-  
-   textAlign(CENTER, CENTER);
+  background("rgb(245,234,247)");
+
+  textAlign(CENTER, CENTER);
   textSize(24);
-  fill('black')
-  text('hello', 50, 50);
+  fill("pink");
+  text("hello", 50, 50);
 }
