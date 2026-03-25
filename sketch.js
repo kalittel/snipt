@@ -1,7 +1,12 @@
 function setup() {
-  createCanvas(400, 400);
+  createCanvas(windowWidth, windowHeight);
 }
 
 function draw() {
-  background(220);
+  background('rgb(245,234,247)');
+  
+   textAlign(CENTER, CENTER);
+  textSize(24);
+  fill('black')
+  text('hello', 50, 50);
 }
