@@ -11,3 +11,32 @@ canvas {
 body {
   background-color: yellow;
 }
+
+.button1 {
+  position: fixed;
+  width: 200px;                 
+  height: 100px;
+  top: 340px;
+  bottom: auto;
+  left: 615px;
+  right: auto;
+}
+  .button2 {
+  position: fixed;
+  width: 400px;                 
+  height: 100px;
+  top: 495px;
+  bottom: auto;
+  left: 525px;
+  right: auto;
+
+}
+  .button3 {
+  position: fixed;
+  width: 400px;                 
+  height: 100px;
+  top: 660px;
+  bottom: auto;
+  left: 525px;
+  right: auto;
+}              
