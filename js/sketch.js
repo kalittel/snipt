@@ -1,8 +1,8 @@
 function preload() {
   
   // bg image 
-  img=loadImage('Background.JPG');
-  img2=loadImage('Sniptlogoo.png');
+  img=loadImage('imgs/Background.JPG');
+  img2=loadImage('imgs/Sniptlogoo.png');
 }
 function setup() {
   createCanvas(windowWidth, windowHeight);
