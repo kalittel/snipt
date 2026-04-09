@@ -5,7 +5,8 @@ function preload() {
   img2=loadImage('imgs/Sniptlogoo.png');
 }
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  const game = createCanvas(windowWidth, windowHeight);
+  game.canvas.style = "";
 
   link=createA('create.html', '<img src="imgs/Create.png" alt="CreateButton">');
   link.position(width/3.1, height/2.88);
@@ -18,7 +19,7 @@ function draw() {
   
    textAlign(CENTER, CENTER);
   textSize(24);
-  fill('black')
+  fill('black');
   text('hello', 50, 50);
   
   rectMode(CORNER);
