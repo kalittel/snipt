@@ -6,6 +6,10 @@ function preload() {
 }
 function setup() {
   createCanvas(windowWidth, windowHeight);
+
+  link=createA('create.html', '<img src="imgs/Create.png" alt="CreateButton">');
+  link.position(width/3.1, height/2.88);
+  link.style('transform', 'scale(.476)');
 }
 
 function draw() {
