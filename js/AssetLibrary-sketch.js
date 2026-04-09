@@ -11,4 +11,9 @@ function setup() {
 function draw() {
   imageMode(CORNER);
   image(img, 1, 0, width, height);
+
+  rectMode(CORNER);
+  fill('#FFF0F3');
+  noStroke();
+  rect(0, 0, width, 225); 
 }
