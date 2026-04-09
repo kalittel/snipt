@@ -9,7 +9,7 @@ canvas {
 }
 
 .button1 {
-  position: fixed;
+  position: absolute;
   width: 200px;                 
   height: 100px;
   top: 340px;
@@ -18,7 +18,7 @@ canvas {
   right: auto;
 }
   .button2 {
-  position: fixed;
+  position: absolute;
   width: 400px;                 
   height: 100px;
   top: 495px;
@@ -28,7 +28,7 @@ canvas {
 
 }
   .button3 {
-  position: fixed;
+  position: absolute;
   width: 400px;                 
   height: 100px;
   top: 73%;
