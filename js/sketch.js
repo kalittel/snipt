@@ -40,3 +40,7 @@ function draw() {
   imageMode(CENTER);
   image(img2, windowWidth/2, windowHeight/5.5, 350, 270);
 }
+
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+}
