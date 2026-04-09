@@ -12,18 +12,18 @@ canvas {
   position: absolute;
   width: 200px;                 
   height: 100px;
-  top: 340px;
+  top: 41.5%;
   bottom: auto;
-  left: 615px;
+  left: 42%;
   right: auto;
 }
   .button2 {
   position: absolute;
   width: 400px;                 
   height: 100px;
-  top: 495px;
+  top: 60.5%;
   bottom: auto;
-  left: 525px;
+  left: 36%;
   right: auto;
 
 }
@@ -31,8 +31,8 @@ canvas {
   position: absolute;
   width: 400px;                 
   height: 100px;
-  top: 75%;
+  top: 81%;
   bottom: auto;
-  left: 50%;
+  left: 36%;
   right: auto;
 }              
