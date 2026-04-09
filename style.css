@@ -8,10 +8,6 @@ canvas {
   display: block;
 }
 
-body {
-  background-color: yellow;
-}
-
 .button1 {
   position: fixed;
   width: 200px;                 
