@@ -9,30 +9,30 @@ canvas {
 }
 
 .button1 {
-  position: absolute;
+  position: fixed;
   width: 200px;                 
   height: 100px;
-  top: 41.5%;
+  top: 200px;
   bottom: auto;
-  left: 42%;
+  left: 615px;
   right: auto;
 }
   .button2 {
-  position: absolute;
+  position: fixed;
   width: 400px;                 
   height: 100px;
-  top: 60.5%;
+  top: 495px;
   bottom: auto;
-  left: 36%;
+  left: 525px;
   right: auto;
 
 }
   .button3 {
-  position: absolute;
+  position: fixed;
   width: 400px;                 
   height: 100px;
-  top: 81%;
+  top: 660px;
   bottom: auto;
-  left: 36%;
+  left: 525px;
   right: auto;
 }              
