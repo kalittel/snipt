@@ -25,6 +25,13 @@ canvas {
   bottom: auto;
   left: 525px;
   right: auto;
-
 }
- 
+   .button3 {
+  position: absolute;
+  width: 400px;                 
+  height: 100px;
+  top: 660px;
+  bottom: auto;
+  left: 525px;
+  right: auto;
+  }
