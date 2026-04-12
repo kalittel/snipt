@@ -9,7 +9,7 @@ canvas {
 }
 
 .legend {
- position: fixed;
+ position: relative;
  top: 300px;
  left: 1000px;
  width: 250px;
