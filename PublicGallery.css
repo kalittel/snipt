@@ -8,50 +8,42 @@ canvas {
   display: block;
 }
 
-.legend {
- position: absolute;
- top: 300px;
- left: 1000px;
- width: 200px;
- height: auto;
-}
-
-.Create {
+.PG {
  position: absolute;
  top: 5px;
  bottom: auto;
- left: 150px;
+ left: 80px;
  right: auto;
- width: 200px;
- height: auto;
+ width: auto;
+ height: 90px;
 }
 
 .HomeButton {
  position: absolute;
  top: 8px;
  bottom:auto;
- left: 425px;
+ left: 610px;
  right: auto;
  width: 80px;                 
  height: 80px;}
+
+ .CButton {
+ position: absolute;
+ top: 8px;
+ bottom: auto;
+ left: 725px;
+ right: auto;
+ width: auto;                 
+ height: 80px;
+ }
+
 
  .ALButton {
  position: absolute;
  top: 8px;
  bottom: auto;
- left: 565px;
+ left: 915px;
  right: auto;
- width: 250px;                 
- height: 80px;
- }
-
-
- .PGButton {
- position: absolute;
- top: 8px;
- bottom: auto;
- left: 850px;
- right: auto;
- width: 300px;                 
+ width: auto;                 
  height: 80px;
 }

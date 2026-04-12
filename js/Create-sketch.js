@@ -4,15 +4,17 @@ let brushSize = 10;
 
 
 function preload() {
-  
-  // bg image 
-  img=loadImage('imgs/Background.JPG');
-  img2=loadImage('imgs/Sniptlogoo.png');
+
 }
 function setup() {
+
 let canvas = createCanvas(462, 642);
  canvas.position(500, 135);
  background('white');
+
+  button = createButton('Download');
+  button.position(1045, 580);
+  button.mousePressed(saveDrawing);
  
 }
 
@@ -75,5 +77,8 @@ function keyPressed() {
   else if (keyCode === DOWN_ARROW) {
    brushSize -= 2;
   }
+}
+  function saveDrawing() {
+  save("MyMasterpiece.jpg");
 }
 

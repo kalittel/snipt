@@ -15,5 +15,5 @@ function draw() {
   rectMode(CORNER);
   fill('#FFF0F3');
   noStroke();
-  rect(0, 0, width, 225); 
+  rect(0, 0, width, 100); 
 }
