@@ -12,6 +12,6 @@ canvas {
  position: fixed;
  top: 300px;
  left: 1000px;
- width: 100px;
- height: 200px;
+ width: 200px;
+ height: auto;
 }
