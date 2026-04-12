@@ -9,9 +9,9 @@ canvas {
 }
 
 .legend {
- position: absolute;
+ position: fixed;
  top: 300px;
  left: 1000px;
  width: 100px;
- height: auto;
+ height: 200px;
 }
