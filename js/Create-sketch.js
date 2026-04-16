@@ -1,21 +1,34 @@
 let colors = ['#ff3535', '#ffba3b', '#ffff7b', '#74ff74', '#2d88ff', '#b86cff', '#FFC0CB', '#000000', '#FFFFFF']; // Array of colors (red, orange, yellow, green, blue, violet, pink, black, white)
 let currentColor = 0; 
 let brushSize = 10;
-
+let database;
 
 function preload() {
 
 }
 function setup() {
-
+console.log(firebaseConfig);
 let canvas = createCanvas(462, 642);
  canvas.position(500, 135);
  background('white');
+ canvas.parent('canvascontainer');
 
-  button = createButton('Download');
-  button.position(1045, 580);
-  button.mousePressed(saveDrawing);
+
+ if (!firebase.apps.length) {
+ firebase.initializeApp(firebaseConfig);
+}
+
+database = firebase.database();
+
+//var saveButton = select('#saveButton');
+//saveButton.mousePressed(saveDrawing);
+
+button = createButton('Download');
+button.position(1045, 580);
+button.mousePressed(saveDrawing);
  
+//var ref = database.ref('drawings');
+//ref.on('value', gotData, errData);
 }
 
 function draw() {
@@ -80,5 +93,39 @@ function keyPressed() {
 }
   function saveDrawing() {
   save("MyMasterpiece.jpg");
+  var ref = database.ref('drawings');
+  var data = {
+    name: "kort",
+    message: " save drawing"
+};
+var result = ref.push(data);
+console.log(result.key);
+ //function dataSent(status) {
+  //console.log(status);
 }
 
+function gotData(data) {
+var drawings = data.val();
+var keys = Object.keys(drawings);
+for (var i = 0; i < keys.length; i++)
+  var key = keys[i];
+console.log(key);
+}
+
+//function errData(err) {
+  //console.log(err);
+//}
+//function saveDrawing() {
+ //var ref = database.ref('drawings');
+ // var data = {
+   // name: "kort",
+   // drawing: drawing
+ // }
+ //var result = ref.push(database, dataSent);
+ //console.log(result.key);
+
+
+ //function dataSent(status) {
+  //console.log(status);
+ //}
+//}
