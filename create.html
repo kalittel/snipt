@@ -3,49 +3,42 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  
     <style>
     body {
     background-image: url('imgs/createBG.jpg');
     background-size: 1000px;
-
-    
     }
 
     #rectangle{
     width: 100%;
     height: 100px;
     background: rgb(255, 240, 243);
-}
-      
+    }
     </style>
   
     <title>Snipt</title>
 
     <link rel="stylesheet" type="text/css" href="create.css" />
 
+    <script src="libraries/p5.min.js"></script>
+    <script src="libraries/p5.sound.min.js"></script>
+
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
 
     <script>
-const firebaseConfig = {
-  apiKey: "AIzaSyBwi36cojOZlhIYmujapRIXs-sevDGRNwo",
-  authDomain: "snipt-404fd.firebaseapp.com",
-  projectId: "snipt-404fd",
-  storageBucket: "snipt-404fd.firebasestorage.app",
-  messagingSenderId: "2991547383",
-  appId: "1:2991547383:web:70a83058f3ca819dfd04f2",
-  measurementId: "G-64Y0J6Q2D5"
-};
+    const firebaseConfig = {
+    apiKey: "AIzaSyBwi36cojOZlhIYmujapRIXs-sevDGRNwo",
+    authDomain: "snipt-404fd.firebaseapp.com",
+    projectId: "snipt-404fd",
+    storageBucket: "snipt-404fd.firebasestorage.app",
+    messagingSenderId: "2991547383",
+    appId: "1:2991547383:web:70a83058f3ca819dfd04f2",
+    measurementId: "G-64Y0J6Q2D5"
+    };
 
-firebase.initializeApp(firebaseConfig);
-
-</script>
-
-
-  <script src="libraries/p5.min.js"></script>
-  <script src="libraries/p5.sound.min.js"></script>
+    firebase.initializeApp(firebaseConfig);
+    </script>
 
   </head>
 

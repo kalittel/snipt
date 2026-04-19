@@ -47,3 +47,9 @@ canvas {
  width: auto;                 
  height: 80px;
 }
+
+#gallery {
+  position: absolute;
+  top: 120px; 
+  left: 20px;
+}

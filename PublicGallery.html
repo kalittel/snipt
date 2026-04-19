@@ -10,14 +10,35 @@
 
     <script src="libraries/p5.min.js"></script>
     <script src="libraries/p5.sound.min.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+
+    <script>
+    const firebaseConfig = {
+    apiKey: "AIzaSyBwi36cojOZlhIYmujapRIXs-sevDGRNwo",
+    authDomain: "snipt-404fd.firebaseapp.com",
+    projectId: "snipt-404fd",
+    storageBucket: "snipt-404fd.firebasestorage.app",
+    messagingSenderId: "2991547383",
+    appId: "1:2991547383:web:70a83058f3ca819dfd04f2",
+    measurementId: "G-64Y0J6Q2D5"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    </script>
   </head>
 
   <body>
+      <script src="js/PublicGallery-sketch.js"></script>
     <img src="imgs/PublicGallery.png" class="PG">
-    <script src="PublicGallery-sketch.js"></script>
     <a href="index.html" ><img src="imgs/HomeButton.png" alt="home word image" class="HomeButton">
     <a href="create.html" ><img src="imgs/CreateButton2.png" alt="AL word image" class="CButton">
     <a href="AssetLibrary.html" ><img src="imgs/ALButton.png" alt="PG word image" class="ALButton">
-    <script src="js/AssetLibrary-sketch.js"></script>
+
+    <div id ="canvascontainer"></div>
+
+    <div id="gallery"></div>
+    
   </body>
 </html>

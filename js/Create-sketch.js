@@ -8,7 +8,7 @@ function preload() {
 }
 function setup() {
 console.log(firebaseConfig);
-let canvas = createCanvas(462, 642);
+canvas = createCanvas(462, 642);
  canvas.position(500, 135);
  background('white');
  canvas.parent('canvascontainer');
@@ -91,17 +91,19 @@ function keyPressed() {
    brushSize -= 2;
   }
 }
-  function saveDrawing() {
+ function saveDrawing() {
   save("MyMasterpiece.jpg");
-  var ref = database.ref('drawings');
-  var data = {
-    name: "kort",
-    message: " save drawing"
+    var ref = database.ref('drawings');
+
+ var data = {
+  name: "kort",
+  //htmlelement saves image to firebase not just the title
+  img: canvas.elt.toDataURL()
 };
-var result = ref.push(data);
-console.log(result.key);
- //function dataSent(status) {
-  //console.log(status);
+//pushes data
+  ref.push(data);
+//tells me if data was pushed
+  console.log("pushed to firebase");
 }
 
 function gotData(data) {
