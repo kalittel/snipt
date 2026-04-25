@@ -1,133 +1,134 @@
-let colors = ['#ff3535', '#ffba3b', '#ffff7b', '#74ff74', '#2d88ff', '#b86cff', '#FFC0CB', '#000000', '#FFFFFF']; // Array of colors (red, orange, yellow, green, blue, violet, pink, black, white)
-let currentColor = 0; 
-let brushSize = 10;
-let database;
+let mode = 'draw';
+let statusText = 'Mode: Drawing';
+let colorPicker;
+let selectedImg;
+let images = [];
+let imagePaths = [
+  "imgs/fish.png",
+  "imgs/fish.png",
+  "imgs/fish.png",
+  "imgs/fish.png",
+  "imgs/create.png",
+  "imgs/create.png",
+  "imgs/create.png",
+  "imgs/create.png",
+  "imgs/create.png",
+  "imgs/create.png"
+];
+
+let brushSize = 8;
+let stickerSize = 50;
 
 function preload() {
-
+  images[0] = loadImage('imgs/fish.png');
+  images[1] = loadImage('imgs/fish.png');
+  images[2] = loadImage('imgs/fish.png');
+  images[3] = loadImage('imgs/fish.png');
+  images[4] = loadImage('imgs/create.png');
+  images[5] = loadImage('imgs/create.png');
+  images[6] = loadImage('imgs/create.png');
+  images[7] = loadImage('imgs/create.png');
+  images[8] = loadImage('imgs/create.png');
+  images[9] = loadImage('imgs/create.png');
+  selectedImg = images[0];
 }
 function setup() {
-console.log(firebaseConfig);
+//console.log(firebaseConfig);
 canvas = createCanvas(462, 642);
  canvas.position(500, 135);
  background('white');
- canvas.parent('canvascontainer');
 
-
- if (!firebase.apps.length) {
- firebase.initializeApp(firebaseConfig);
-}
-
-database = firebase.database();
-
-//var saveButton = select('#saveButton');
-//saveButton.mousePressed(saveDrawing);
-
+ //creates and positions button that saves drawing to users computer (AI)
 button = createButton('Download');
 button.position(1045, 580);
 button.mousePressed(saveDrawing);
- 
-//var ref = database.ref('drawings');
-//ref.on('value', gotData, errData);
+
+  let drawBtn = createButton('Drawing Mode');
+  drawBtn.position(10, 420);
+  drawBtn.style('color', 'hotpink'); 
+  drawBtn.style('background-color', 'pink'); 
+  drawBtn.style('border-radius', '10px');
+  drawBtn.style('height', '50px');
+  drawBtn.mousePressed(() => { mode = 'draw'; statusText = 'Mode: Drawing'; });
+
+   let collageBtn = createButton('Collage Mode');
+  collageBtn.position(110, 420);
+  collageBtn.style('color', 'hotpink'); 
+  collageBtn.style('background-color', 'pink'); 
+  collageBtn.style('border-radius', '10px');
+  collageBtn.style('height', '50px');
+  collageBtn.mousePressed(() => { mode = 'collage'; statusText = 'Mode: Collage'; });
+
+  colorPicker = createColorPicker('#000000');
+  colorPicker.position(220, 420);
+
+   let clearBtn = createButton('Clear All');
+  clearBtn.position(520, 660);
+  clearBtn.mousePressed(() => background(255));
+
+  //AI
+  let panel = createDiv();
+panel.position(20, 150);
+panel.size(120, 500);
+panel.style("overflow-y", "scroll");
+panel.style("background", "#FFF0F3");
+panel.style("padding", "5px");
+panel.style("display", "flex");
+panel.style("flex-direction", "column");
+panel.style("gap", "10px");
+
+// add all your images into the scroll panel
+for (let i = 0; i < imagePaths.length; i++) {
+  let imgBtn = createImg(imagePaths[i]);
+  imgBtn.size(80, 80);
+  imgBtn.parent(panel);
+
+  imgBtn.mousePressed(() => {
+    selectedImg = images[i];
+    mode = 'collage';
+    statusText = 'Mode: Collage (Sticker ' + (i + 1) + ')';
+  });
 }
+}
+
+
+
 
 function draw() {
 
-    if (mouseIsPressed) {
-    stroke(colors[currentColor]);
+  if (mode === 'draw' && mouseIsPressed) {
+    stroke(colorPicker.color());
     strokeWeight(brushSize);
-    line(pmouseX, pmouseY, mouseX, mouseY);}
-
+    line(pmouseX, pmouseY, mouseX, mouseY);
+  }
 }
 
 function keyPressed() {
-  // Change color based on key pressed
-  switch (key) {
-    case 'r':
-    case 'R':
-      currentColor = 0; // Red
-      break;
-    case 'o':
-    case 'O':
-      currentColor = 1; // Orange
-      break;
-    case 'y':
-    case 'Y':
-      currentColor = 2; // Yellow
-      break;
-    case 'g':
-    case 'G':
-      currentColor = 3; // Green
-      break;
-    case 'b':
-    case 'B':
-      currentColor = 4; // Blue
-      break;
-    case 'v':
-    case 'V':
-      currentColor = 5; // Violet
-      break;
-    case 'p':
-    case 'P':
-      currentColor = 6; // Pink
-      break;
-    case 'k':
-    case 'K':
-      currentColor = 7; // Black
-      break;
-    case 'w':
-    case 'W':
-    case 'e':
-    case 'E':
-      currentColor = 8; // White (Eraser)
-      break;
-  }
-  // Change brush size when the up arrow key is pressed
+
+  // brush size
   if (keyCode === UP_ARROW) {
     brushSize += 2;
+  } else if (keyCode === DOWN_ARROW) {
+    brushSize -= 2;
   }
-  // Change brush size when the down arrow key is pressed
-  else if (keyCode === DOWN_ARROW) {
-   brushSize -= 2;
+
+  // sticker size
+  if (key === '[') {
+    stickerSize -= 5;
+  } else if (key === ']') {
+    stickerSize += 5;
   }
 }
+
+  function mousePressed() {
+  // --- ORIGINAL COLLAGE LOGIC ---
+  if (mode === 'collage' && mouseY < height) {
+    imageMode(CENTER);
+    image(selectedImg, mouseX, mouseY, stickerSize, stickerSize);
+  }
+}
+
+//saves drawing as MyMasterpiece.jpg
  function saveDrawing() {
   save("MyMasterpiece.jpg");
-    var ref = database.ref('drawings');
-
- var data = {
-  name: "kort",
-  //htmlelement saves image to firebase not just the title
-  img: canvas.elt.toDataURL()
-};
-//pushes data
-  ref.push(data);
-//tells me if data was pushed
-  console.log("pushed to firebase");
 }
-
-function gotData(data) {
-var drawings = data.val();
-var keys = Object.keys(drawings);
-for (var i = 0; i < keys.length; i++)
-  var key = keys[i];
-console.log(key);
-}
-
-//function errData(err) {
-  //console.log(err);
-//}
-//function saveDrawing() {
- //var ref = database.ref('drawings');
- // var data = {
-   // name: "kort",
-   // drawing: drawing
- // }
- //var result = ref.push(database, dataSent);
- //console.log(result.key);
-
-
- //function dataSent(status) {
-  //console.log(status);
- //}
-//}
