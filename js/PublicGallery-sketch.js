@@ -4,12 +4,14 @@ let fileInput;
 function preload() {
   
   // bg image 
-  img=loadImage('imgs/Background.JPG');
-  img2=loadImage('imgs/Sniptlogoo.png');
+  //img=loadImage('imgs/Background.JPG');
+  //img2=loadImage('imgs/Sniptlogoo.png');
+  //img2=loadImage('imgs/paper.png');
 }
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
+  
 
 //made gallery into Div to help with placement and prevent issues with other elements on page
 let gallery = createDiv('');
@@ -22,7 +24,7 @@ gallery.position(100, 200);
 
   //creates upload button that when pressed opens files and allows the user to choose one to upload to be displayed on canvas
   fileInput = createFileInput(handleFile);
-  fileInput.position(20, 20);
+  fileInput.position(1200, 60);
 
   //creates load gallery function
   loadGallery();
@@ -48,13 +50,15 @@ function handleFile(file) {
 }
 
 function draw() {
-  imageMode(CORNER);
-  image(img, 1, 0, width, height);
+  //imageMode(CORNER);
+  //image(img, 1, 0, width, height);
 
-  rectMode(CORNER);
-  fill('#FFF0F3');
-  noStroke();
-  rect(0, 0, width, 100); 
+ // image(img2, 0, 150, width, 5000);
+
+  //rectMode(CORNER);
+ // fill('#FFF0F3');
+ // noStroke();
+ // rect(0, 0, width, 100); 
 }
 //displays the images
 function loadGallery() {
@@ -77,7 +81,7 @@ imgEl.parent('gallery');
 imgEl.size(162, 242);
 
 imgEl.style('margin', '15px');
-imgEl.style('border', '3px solid #65012b');
+imgEl.style('border', '3px solid #fd6f89');
 imgEl.style('border-radius', '8px');
 imgEl.style('display', 'inline-block');
     }
