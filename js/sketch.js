@@ -17,6 +17,7 @@ function draw() {
   fill('black');
   text('hello', 50, 50);
   
+  //mode determines where the image or shape is being displayed to allow for easier movement 
   rectMode(CORNER);
   fill('#FFF0F3');
   noStroke();

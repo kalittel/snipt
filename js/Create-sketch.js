@@ -221,7 +221,7 @@ images[100] = loadImage('imgs/collage101.png');
 images[101] = loadImage('imgs/collage102.png');
 images[102] = loadImage('imgs/collage103.png');
 images[103] = loadImage('imgs/collage104.png');
-
+//default selected image back to image 1
   selectedImg = images[0];
 }
 
@@ -242,11 +242,13 @@ button.style('border-radius', '10px');
 button.style('border-color', '#fd6f89');
 button.style('height', '40px');
 button.style('width', '80px');
+//allows the user to save the drawing and have the popup show up both with one click of button
 button.mousePressed(() => {
   saveDrawing();
   showPopup();
 });
 
+//allows user to switch from adding images to drawing
   let drawBtn = createButton('Drawing Mode');
   drawBtn.position(1104, 270);
   drawBtn.style('font-weight', 'bold');
@@ -256,8 +258,11 @@ button.mousePressed(() => {
   drawBtn.style('border-color', '#fd6f89');
   drawBtn.style('height', '40px');
   drawBtn.style('width', '150px');
+
+  //if user in draw mode
   drawBtn.mousePressed(() => { mode = 'draw'; statusText = 'Mode: Drawing'; });
 
+  //allows user to switch from drawing to adding images 
    let collageBtn = createButton('Collage Mode');
   collageBtn.position(1104, 330);
   collageBtn.style('font-weight', 'bold');
@@ -269,12 +274,15 @@ button.mousePressed(() => {
   collageBtn.style('width', '150px');
   collageBtn.mousePressed(() => { mode = 'collage'; statusText = 'Mode: Collage'; });
 
+  //allows user to pick their color from a color picker when drawing andstyles the button
   colorPicker = createColorPicker('#fd6f89');
   colorPicker.position(1104, 210);
   colorPicker.style('width', '55px')
   colorPicker.style('height', '40px')
   colorPicker.style('border-color', '#fd6f89');
 
+
+  //creates a clear button and styles it
    let clearBtn = createButton('Clear All');
   clearBtn.position(1202, 665);
   clearBtn.mousePressed(() => background(255));
@@ -286,7 +294,7 @@ button.mousePressed(() => {
   clearBtn.style('height', '30px');
   clearBtn.style('width', '70px');
 
-  //chatGPT
+  //chatGPT - created panel/div for all images to be stored and displayed in
   let panel = createDiv();
 panel.position(115, 150);
 panel.size(250, 600);
@@ -324,6 +332,8 @@ imgBtn.style('height', 'auto');
 
 function draw() {
 
+
+  // when both conditions are met - draw mode AND the mouse is being pressed
   if (mode === 'draw' && mouseIsPressed) {
     stroke(colorPicker.color());
     strokeWeight(brushSize);
@@ -342,16 +352,19 @@ function keyPressed() {
 
   // sticker size
   if (key === '[') {
+    //decreased 5
     stickerSize -= 5;
   } else if (key === ']') {
+    //increased 5
     stickerSize += 5;
   }
 }
-
+//if user clickign in canvas and in collage mode - will allow picture to be used as sticker
   function mousePressed() {
   if (mode === 'collage' && mouseY < height) {
     imageMode(CENTER);
    let w = stickerSize;
+   //scales height proportionally to w in order for it to not stretch the image when placed on canvas
     let h = selectedImg.height * (w / selectedImg.width);
 
     image(selectedImg, mouseX, mouseY, w, h);
@@ -363,10 +376,13 @@ function keyPressed() {
   save("MyMasterpiece.jpg");
 }
 
-////gemini
+//gemini
 function showPopup() {
+  //display popup
   popup.show(); 
+  //makes display disappear after a certain amount of time
    setTimeout(() => {
     popup.hide();
+    //3 secs - time pop up is up for
   }, 3000);
 }

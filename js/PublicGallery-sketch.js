@@ -26,25 +26,29 @@ gallery.position(100, 200);
   fileInput = createFileInput(handleFile);
   fileInput.position(1200, 60);
 
-  //creates load gallery function
+  //references/connects load gallery function
   loadGallery();
 }
 
 //function tells computer what to do with the file after user uploaded it 
 function handleFile(file) {
+  // only allows image files to be selected
   if (file.type === 'image') {
 
+    //reads the files from users computer
     let reader = new FileReader();
-//pushes images to firebase
+//pushes images to firebase - e - event object
     reader.onload = function (e) {
+      //stores the file in the drawings folder in my firebase realtime database 
       database.ref('drawings').push({
+        //stores image as text/url
         img: e.target.result
       });
       
 //tells me if it worked and 
       console.log("uploaded correctly");
     };
-
+//reads the image url
     reader.readAsDataURL(file.file);
   }
 }
@@ -60,16 +64,21 @@ function draw() {
  // noStroke();
  // rect(0, 0, width, 100); 
 }
+
 //displays the images
 function loadGallery() {
+  //references data stored in drawings folder in firebase
   let ref = database.ref('drawings');
 
+  //not just reads, but grabs the data only once from firebase
   ref.once('value', (data) => {
+    //turns the firebase data into a p5 object
     let drawings = data.val();
-
+//loops through all data in drawings
     for (let id in drawings) {
+  //created image id
       let item = drawings[id];
-
+// filters out bad data - ! = item null - does not exist 
       if (!item || !item.img) continue;
 
  //creates the images   

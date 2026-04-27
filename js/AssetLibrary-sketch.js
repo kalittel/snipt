@@ -1,5 +1,6 @@
-let img, img2;
+let img;
 
+//allows me to easily state all images without declaring each and every one of them seperately 
 let imagePaths = [
   "imgs/fish.png",
   "imgs/collage1.png",
@@ -111,32 +112,40 @@ function preload() {
   
   // bg image 
   img=loadImage('imgs/Background.JPG');
-  img2=loadImage('imgs/Sniptlogoo.png');
 }
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
 
+  //created scrollable div where all images are displayed
   let panel = createDiv();
+  //div position
   panel.position(50, 120);
+  //div size
   panel.size(windowWidth - 100, windowHeight - 150);
 
+  //overflow-y makes it verticle and scrollable
   panel.style("overflow-y", "scroll");
   panel.style("background", "#FFF0F3");
+  //allows breathing room between content and border
   panel.style("padding", "15px");
-
+//determines how assets are displayed
   panel.style("display", "grid");
+  //determines grid style - columns - repeated - 140 px wide - repeats columns
   panel.style("grid-template-columns", "repeat(auto-fill, 140px)");
+  //space between grid items
   panel.style("gap", "15px");
 
+  //start at first image keep going till its end of array ++ moved it along to next image - displays it in div
   for (let i = 0; i < imagePaths.length; i++) {
+    //created image element/tag in site
     let imgEl = createImg(imagePaths[i]);
+    //puts images inside div
     imgEl.parent(panel);
-
+//styles images when displayed
     imgEl.style('width', '140px');
     imgEl.style('height', 'auto');
     imgEl.style('border-radius', '10px');
-    imgEl.style('cursor', 'pointer');
   }
 }
 
